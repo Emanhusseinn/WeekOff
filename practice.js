@@ -209,3 +209,84 @@ var obj ={
 
 
 
+//week2-day4
+
+
+
+//Ex1
+function sum(num){
+	if(num === 0){
+		return 0;
+	}return num + sum(num-1)
+}
+
+
+
+
+//Ex2
+function factorial(n){
+	if(n===0){
+		return 1;
+	}return n*factorial(n-1)
+}
+
+
+
+//Ex3
+function repeatString(s,n){
+	if (n === 0){
+		return '';
+	}return s+repeatString(s,n-1)
+}
+
+
+
+//Ex4
+function fibonacci(number){
+	if(number === 0){
+		return 0;
+	}
+	else if (number <= 2){
+		return 1;
+	}
+return fibonacci(number-1)+fibonacci(number-2);
+}
+// var array= [1,1,2,3,5,8,13,21]
+// function Fibo(Num)
+// {
+//  if (Num<=1){
+//  	return 1;
+//  }
+//  return array[Num-1]+Fibo(Num-2)
+// 	//return array[Num-1]+array[Num-2]
+// }
+
+
+
+//Ex5
+
+
+
+function multiplyBy10(n1,n2){
+	if (n2===0){
+		return n1;
+	}
+	return 10*multiplyBy10(n1,n2-1)
+
+}
+
+
+//ex6
+
+
+function sumBetween(start,end){
+	if(start>end){
+		return 0;
+	}
+	return start+sumBetween(start+1,end)
+}
+
+
+
+     
+

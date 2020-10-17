@@ -290,3 +290,127 @@ function sumBetween(start,end){
 
      
 
+//week3d1
+
+//ex1+2
+
+//declae a var and assign the wanted keys for it
+var book1 ={
+	title:"Harry Potter and the Sorcerer's Stone",
+	 author:"J.K. Rowling",
+	 Genre:"children Novel",
+	 MSRP:20,
+	Description:"Throughout the series, Harry is described as having his father's perpetually untidy"
+	 +"\nblack hair, his mother's bright green eyes, and a lightning bolt-shaped scar on his"
+	 +"\nforehead. He is further described as small and skinny for his age with a thin face"
+	 +"\nand knobbly knees, and he wears round eyeglasses.",
+	 NumberOfPages:336
+}
+
+var book2={
+	title:"Romeo and Juliet",
+	author:"William Shakespeare",
+	 Genre:"Remontic Novel",
+	MSRP:95,
+	
+	 Description:"Romeo and Juliet is a tragedy written by William Shakespeare"
+	 +"\n early in his career about two young star-crossed lovers whose deaths"
+	+"\n ultimately reconcile their feuding families. It was among Shakespeare's "
+	 +"\nmost popular plays during his lifetime and, along with Hamlet, is one of his"
+	  +"\nmost frequently performed plays..",
+	  NumberofPages:480
+};
+var book3={
+	title:"Structure and Interpretation of Computer Programs",
+	author:"Gerald Jay Sussman, Hal Abelson",
+	Genre:"Education",
+	MSRP:45,
+	  Description: "is a computer science textbook by Massachusetts Institute"
+	+"\nof Technology professors Harold Abelson and Gerald Jay Sussman with Julie Sussman."
+	 +"\n ... It was formerly used as the textbook for MIT"
+	  +"\ns introductory course in electrical engineering and computer science",
+	  NumberOfPages:657
+};
+
+
+
+//3 
+function bookFactory(title,author,Genre,MSRP,Description,NumberOfPages){
+	return{
+			title:title,
+	author:author,
+	Genre:Genre,
+	MSRP:MSRP,
+	  Description:Description,
+	  NumberOfPages:NumberOfPages
+
+	};
+}
+
+
+//4
+
+function disPlayBook(book){
+	return book.title + " by " + book.author + " it's a " + book.Genre + " it cost " + book.MSRP + " it talks about " + book.Description + " and it has " + book.NumberOfPages + " pages."
+}
+
+
+
+//Ex5
+var books=[book1,book2,book3];
+
+
+
+//6 
+function displayBooks(books){
+
+	var books = 0;
+	for (var i = 0; i < books.length; i++)
+return books;
+}
+
+
+
+
+//7
+ var books = [
+      {
+        title:'Lucky Jim',
+        author:'Kingsley Amis',
+        category:'self help',
+        Price: 22.77,
+        id : 0 
+      },
+      {
+        title: 'Money',
+        author:'Martin Amis',
+        category:'Classic',
+        price: 32.34,
+        id : 1 
+      },
+      {
+        title:'The Information',
+        author:'Martin Amis',
+        category:’'Classic',
+        Price: 23.1,
+        id : 2 
+       }
+]
+ function searchBookByAuthor(authorN,arr){
+return books[author];
+//  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

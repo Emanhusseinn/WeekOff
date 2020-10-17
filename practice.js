@@ -406,6 +406,173 @@ return books[author];
 
 
 
+//E1
+function makeCounter() {
+	var count = 0;
+	function counter(){
+		count =counter + 1
+		return count;	
+	}
+		return counter;
+
+}
+
+var counter1 = makeCounter();
+var counter2 = makeCounter();
+
+//E2
+function makeCounter(number) {
+	var count = number;
+	 function counter(){
+		count += 1
+		return count;	}
+		return counter;
+
+}
+var counter1 = makeCounter(100);
+var counter2 = makeCounter(200);
+
+//E3
+function pow(exponent){
+	
+	 function result (number ){
+		return number ** exponent;   
+	}
+	return result;
+}
+
+//or 
+function pow(exponent){
+	 return function  (number ){
+		return number ** exponent;   
+	}
+}
+
+
+var square = pow(2);
+var cube   = pow(3);
+var power4 = pow(4);
+
+//E4
+ 
+function zipWith (operation,array1,array2){
+	// declare the result array;
+	var result= [];
+	// if array1 is shorter than array2
+	if ( array1.length < array2.length){
+		// length has the length of the shorter array
+		var length = array1.length ;
+	}
+	// if array2 is shorter, length takes the length of the shorter array
+	var length = array2.length;
+// this function will apply the operation to the two arrays
+	function oper(){
+		// loop over the short array
+	 for (var i=0; i<length;i++){
+	 	// apply the operation to each element in both arrays
+	 	// we put the result in the result array
+     result[i]= operation (array1[i],array2[i])
+	 }
+	 // return the result array
+	 return result;
+	}
+	// return the result of the function oper: which is the result array
+	return oper;
+}
+var x = zipWith(Math.pow,[10,10,10,10], [0,1,2,3] );
+var y = zipWith( Math.max,[1,4,7,1,4,7], [4,7,1,4,7,1]);
+var z = zipWith((a,b) => a + b,[0,1,2,3], [0,1,2,3] );
+
+
+
+
+//week3d4
+//E1
+function makeCounter(){
+	var Count =0;
+	return  function counter() {
+
+    Count = Count + 1;
+
+    return Count;
+
+      };
+}
+var counter1 = makeCounter();
+
+var counter2 = makeCounter();
+
+//E2
+function makeCounter(number){
+	var Count =number;
+	return  function counter() {
+
+    Count = Count + 1;
+
+    return Count;
+
+      };
+}
+var counter1 = makeCounter(100);
+
+var counter2 = makeCounter(200);
+//E3 +E4
+function makeCounter(){
+	var count = 0;
+	return {
+		up: function counter(){
+			count= count+1;
+			return count;
+		},
+		down: function counter2(){
+			count=count-1;
+			return count;
+		},
+		reset: function counter3(){
+			count = 0;
+			return count;
+		}
+
+	};
+	
+}
+ var counter = makeCounter();
+
+//E5
+function makeAccount(initial){
+	var trans=[];
+	var balance = initial; 
+	var before;
+	function  transfactory(type,amount,before,after,status){
+		return{type:type, amount:amount, before:before, after:after, status:status,date:new Day()}
+
+		
+	}
+	return {
+		withdraw : function(amount){
+			 before=balance;
+			if (balance - amount >=0){
+				balance = balance - amount;
+				return "Here's your money: $"+amount; 
+				tras.unshift(trasfactory('withdraw',amount,before,balance,'approved'));
+			}
+			return "Insufficient funds" 
+			tras.unshift(trasfactory('withdraw',amount,before,balance,'denied'));
+
+		},
+		deposit: function(amount){
+			balance=balance+amount;
+			tras.unshift(trasfactory('withdraw',amount,before,balance,'approved'))
+		},
+		transactionHistory: function(){
+			return trans;
+
+		}
+	};
+}
+
+var account = makeAccount(100);
+
 
 
 

@@ -486,7 +486,7 @@ var z = zipWith((a,b) => a + b,[0,1,2,3], [0,1,2,3] );
 
 
 
-//week3d4
+//week3d2
 //E1
 function makeCounter(){
 	var Count =0;
@@ -576,8 +576,61 @@ var account = makeAccount(100);
 
 
 
+//week3d3
+
+function makeToDoList (){
+	var id=0;
+    var todos = [];
+
+    function generateID(){
+	   id=id+1;
+	   return id;
+     }
+
+    function factoryOfToDos(task, status){
+	    return{ id : generateID(),
+		        task:task,
+		       status: status
+	          }
+    }
+
+    function displayTodo(todo) {
+	    return ('ID: ' + todo.id + ' --> ' + 'task: ' + todo.task + ' , ' + 'status: ' +todo.status); 
+     }
+	return { display: function displayToDos(){
+		                 var display='';
+	                    if(todos.length !== 0){
+	                      for (var i = 0; i < todos.length;i++){
+		                     display=display+ displayTodo(todos[i])+'\n';
+	                        }
+	                      return display;
+	                    }
+	                    return [];
+	                   },
+             add : function addToDo(newToDo,task,status){
+	                  var newToDo= factoryOfToDos(task,status);
+	                   todos.push(newToDo);
+	                   console.log(todos)
+                    },
+             complete : function toggleComplete(id,status) {
+             	//status has to either 'completed' or 'umcompleted'
+		                   for (var i =0;i<todos.length;i++) {
+		                      if (todos[i].id === id) 
+			                     todos[i].status = status; 
+	                        }
+                         },
+              clearCompleted: function (){
+              	                for (var i =0; i < todos.length; i++){
+              	                	if (todos[i].status === 'completed'){
+              	                		todos.splice(i,1);
+              	                	}
+              	                }
+                              }           
+} 
 
 
+}
+var list =makeToDoList ();
 
 
 

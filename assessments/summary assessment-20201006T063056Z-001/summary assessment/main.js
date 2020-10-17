@@ -63,19 +63,34 @@ function reduce(array, f, acc) {
 // addID({c : 2}, 'ABC'); // "Invalid code"
 
 // TODO: your code here
-var obj ={
-  name: 'salma',
-  age: 24
-}
-function addID(object, idC){
-  var x = []
- each(object, function(obj,k){
-   x.push(object[k]===idC)
-   if (idC === undefined)
-    return 'n/n';
 
- });
+function addID(object, id ){
+  if(id===undefined){
+    id= "n/n";
+  }
+
+  else if ( object.id = id){
+  return object
+} 
+else {
+    return "Invalid code"
+  }
+
 }
+
+//  function addID(obj,num){
+//   if(typeof(num) === "number"){
+//     obj.id = num;
+//     return obj;
+//   }
+//   if (num===undefined){
+//     obj.id='n/n';
+//     return obj;
+//   }
+//   else {
+//     return "Invalid code"
+//   }
+// }
 
 
 
@@ -94,16 +109,13 @@ function addID(object, idC){
 var Folks = ["Sierra Heimbach", "Angelica Storms",   "Lampton",  "Hampshire"];
 var FollkWithLast =  ["Sierra Heimbach", "Angelica Storms", "Doretta Linen"];
 
-function allHaveLastNames(array){
-  return filter(array, function(element, i){
-    if (array[i] === (typeof'string' + ' ' + typeof'string')){
-      return true;
-    }
-    else return false;
- 
-  });
- }
-
+function AllHaveLastNames(array){
+  return reduce(array,function(result,str,i){
+        return (str.split(" ").length === 2 && result)
+       
+    },true);
+}
+​
 //=============================================================================
 /*                                  Q3                                        */
 //=============================================================================
@@ -112,13 +124,13 @@ function allHaveLastNames(array){
 //Hint: Math.random()
 // TODO: your code here
 
-function coinFlip(a,b){
-  // return Math.random(a)|| Math.random(b)
-  //i'll declare 2 var for each element
-  var head = math.ceil(a)
-  var tail = math.floor(b)
-  return math.floor(math.random())
-
+function  coinFlip (){
+  if(Math.round( Math.random() ) ){
+    return "tails";
+  }
+  else {
+    return "heads";
+  }
 }
 
 
@@ -146,13 +158,18 @@ function coinFlip(a,b){
 
 // TODO: your code here
 var students = ["Aleen Y. Atkins", "Alvaro L. Angelos", "Denese Dossett", "Douglas Denney"];
-function assignStudnetID(array,startingnum,i){
-  var arr = []
-    startingnum[i] = 
-     startingnum[i] = startingnum[i] + 'name';}
- 
+function  assignStudnetID(array,startingnum, i){
+  var x = i || 1;
+  startingnum = startingnum - x;
+  return map(array, function(element, i){
+    startingnum= startingnum + x;
+    return{
+      name: element,
+       id : startingnum
+    };;
+  })
 
-
+}
 
 //=============================================================================
 /*                                  Q5                                         */
@@ -165,15 +182,19 @@ function assignStudnetID(array,startingnum,i){
 // lastNElements( [], 3 ) ==> []
 // lastNElements( [5,6,8,9,12], 9 ) ==> [5,6,8,9,12]
 
-function lastNElements(array, n){
-  // TODO: your code here
-  each(array,function(arr){
-    n = arr.length
-    if (n === arr.length){
-      return arr.length
-    }
-  })
-}
+function lastNElements(array, n) {
+    var result = []; 
+
+    each(array,function(element,i){
+       if(n >= array.length){
+        result = array;
+       } 
+       else {
+        result = array.slice((array.length-n))
+       }
+    })
+    return result;
+
 //=============================================================================
 /*                                  Q6                                        */
 //=============================================================================
@@ -182,13 +203,19 @@ function lastNElements(array, n){
 //replaceDigit("abc1dabc") ==> abc&dabc
 //replaceDigit("p3ython") ==> p&ython
 
-// TODO: your code here
-function replaceDigit(string){
-   return filter(string,function(s){
-    if (s === typeof 'number')
-      s.replace('&')
-  })
-  }
+
+  function  replaceDigit(string){
+  var x = string.split('');
+   for(var i = 0; i < x.length  ; i++ ){
+    if(parseInt(x[i])){
+      x[i] = "&";
+      break;
+    }
+   
+  };
+   return x.join('')
+}
+
 
 //=============================================================================
 /*                                  Q7                                       */
@@ -200,6 +227,34 @@ function replaceDigit(string){
 
 // TODO: your code here
 
+function arraySum(array){
+  var i=0;
+  var sum=0;
+  function SUM(){
+    if(i===array.length-1){
+      return 0;
+    }
+    sum+= array[i]
+        i++;
+    SUM();
+        return sum;
+  }
+  return SUM();
+}
+
+// function arraySum(array,i){
+//     var sum = 0;
+//     function inner(array,i){
+//         if(i === array.length - 1){
+//             return sum;
+//         } else{
+//             sum = sum + array[i];
+//             return inner(array,i+1)
+//         }
+//     }
+//     inner(array,0);
+//     return sum;
+// }
 //=============================================================================
 /*                                  Q8                                   */
 //=============================================================================
@@ -254,6 +309,36 @@ function displayProfilePets(object){
 
 //  displayProfilePets (myProfile)  ===> Pandacat,SashaGoat
 
+function makeProfile(name, age, knowsJavascript, pets){
+  return{name: name,
+         age: age,
+         knowsJavascript: knowsJavascript,
+         pets: pets
+        }
+}
+
+function displayProfile(profile){
+  return "name: " + profile.name + "\n" + "age: " + profile.age + "\n" + "knowsJavascript: " + profile.knowsJavascript + "\n" + "pets: [" + profile.pets + "]";
+}
+function displayProfilePets(profile){
+  var display = "";
+  if(profile.pets.length === 0)
+    return display;
+
+  else if(profile.pets.length === 1)
+    return profile.pets[0];
+
+  else if(profile.pets.length > 1){
+    for(var i = 0; i < profile.pets.length - 1 ; i++){
+      display +=  profile.pets[i] + ", ";
+    }
+    return display += profile.pets[profile.pets.length - 1]
+  }
+}
+
+
+
+
 //=============================================================================
 /*                                  Q9                                     */
 //=============================================================================
@@ -279,7 +364,32 @@ function displayProfilePets(object){
 // Now, to make sure that you are actually reading, make a comment below this and type: Yes I am
 
 // Write your code here .....
-
+function makeProfile(name,age,knowsJavascript,pets){
+    return {
+        name : name,
+        age : age,
+        knowsJavascript : knowsJavascript,
+        pets: pets
+    }
+}
+var profile1 = makeProfile("yasmeen",27,true,['cat','dog']);
+​
+function displayProfile(obj){
+    return `name is:${obj.name}
+    age : ${obj.age}
+    KnowsJavaScript: ${obj.knowsJavascript}
+    Pets you have: ${obj.pets}
+    `
+}
+​
+function displayProfilePets(obj){
+    var result = [];
+    for(var i = 0; i < obj.pets.length; i++){
+        result.push(obj.pets[i]);
+    }
+   result = result.join(',')
+    return result;
+}
 //=============================================================================
 /*                                  Q10                                      */
 //=============================================================================
@@ -299,6 +409,34 @@ function displayProfilePets(object){
 //  safe('money','small') => "watch gold-bar money"
 
 // Write your code here .....
+function ReadingList() {
+    var instance = {};
+    instance.read = 0;
+    instance.unread = 0;
+    instance.toRead = [];
+    instance.currentRead = undefined;
+    instance.readBooks = [];
+    instance.addBook = addBook;
+    instance.finishCurrentBook = finishCurrentBook;
+    return instance;
+  }     
+  
+  var addBook = function(book) {
+    if(this.currentRead === undefined){
+      this.currentRead = book;
+    } else {
+    this.toRead.push(book);
+    this.unread += 1
+    } 
+  }
+  
+  var finishCurrentBook = function() {
+    this.readBooks.push(this.currentRead);
+    console.log(this.readBooks)
+    this.read +=1;
+    this.currentRead = (this.toRead.shift());
+    this.unread -= 1;
+  }
 
 //=============================================================================
 /*                                  Q11                                        */
